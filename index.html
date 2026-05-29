@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Restauracja Boston – Pasłęk</title>
 
+<!-- SEO -->
+<meta name="description" content="Restauracja Boston w Pasłęku – domowe obiady, danie dnia, świeże jedzenie. Zamów telefonicznie.">
+<meta name="keywords" content="Pasłęk restauracja, obiady domowe Pasłęk, jedzenie na telefon Pasłęk">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -52,7 +56,6 @@ nav {
     opacity: 0.75;
 }
 
-/* LINKS */
 .links {
     display: flex;
     gap: 30px;
@@ -69,7 +72,6 @@ nav {
     color: #c9a24e;
 }
 
-/* CALL BUTTON */
 .call-btn {
     border: 1px solid #c9a24e;
     color: #c9a24e;
@@ -117,12 +119,6 @@ nav {
     z-index: 200;
 }
 
-.mobile-menu a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
-
 .mobile-menu.active {
     right: 0;
 }
@@ -167,7 +163,6 @@ section {
     padding: 90px 20px;
     max-width: 1100px;
     margin: auto;
-
     opacity: 0;
     transform: translateY(40px);
     transition: all 0.8s ease;
@@ -185,13 +180,6 @@ section.show {
     border-radius: 22px;
     padding: 30px;
     backdrop-filter: blur(12px);
-    transition: 0.4s;
-}
-
-.card:hover {
-    transform: translateY(-6px);
-    border-color: #c9a24e;
-    box-shadow: 0 15px 40px rgba(201,162,78,0.15);
 }
 
 /* DAY */
@@ -200,17 +188,6 @@ section.show {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
     align-items: center;
-}
-
-.day img {
-    width: 100%;
-    border-radius: 16px;
-}
-
-/* MENU */
-.menu-img {
-    width: 100%;
-    border-radius: 18px;
 }
 
 /* CTA */
@@ -222,14 +199,16 @@ section.show {
     color: #000;
     border-radius: 12px;
     text-decoration: none;
-    transition: 0.3s;
 }
 
-.cta:hover {
-    transform: scale(1.05);
+/* TRUST */
+.trust p {
+    color: #d0d0d0;
+    margin-top: 10px;
+    line-height: 1.7;
 }
 
-/* 🔥 STICKY CALL BUTTON (MOBILE) */
+/* STICKY CALL + ANIMATION */
 .sticky-call {
     position: fixed;
     bottom: 20px;
@@ -240,22 +219,18 @@ section.show {
     border-radius: 50px;
     font-weight: 700;
     text-decoration: none;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     z-index: 999;
     display: none;
-    transition: 0.3s;
+    animation: pulse 2s infinite;
 }
 
-.sticky-call:hover {
-    transform: scale(1.08);
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(201,162,78,0.5); }
+    70% { box-shadow: 0 0 0 15px rgba(201,162,78,0); }
+    100% { box-shadow: 0 0 0 0 rgba(201,162,78,0); }
 }
 
-/* MOBILE */
 @media (max-width: 768px) {
-
-    nav {
-        padding: 12px 20px;
-    }
 
     .links,
     .call-btn {
@@ -270,33 +245,21 @@ section.show {
         font-size: 34px;
     }
 
-    .hero-text p {
-        font-size: 14px;
-    }
-
     .day {
         grid-template-columns: 1fr;
-    }
-
-    section {
-        padding: 60px 15px;
     }
 
     .sticky-call {
         display: block;
     }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <nav>
-    <div class="logo">
-        BOSTON <span>RESTAURACJA</span>
-    </div>
+    <div class="logo">BOSTON <span>RESTAURACJA</span></div>
 
     <div class="links">
         <a href="#about">O NAS</a>
@@ -308,13 +271,10 @@ section.show {
     <a class="call-btn" href="tel:+48552483133">📞 ZADZWOŃ</a>
 
     <div class="hamburger" onclick="toggleMenu()">
-        <div></div>
-        <div></div>
-        <div></div>
+        <div></div><div></div><div></div>
     </div>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
     <a href="#about" onclick="toggleMenu()">O NAS</a>
     <a href="#day" onclick="toggleMenu()">DANIE DNIA</a>
@@ -322,7 +282,6 @@ section.show {
     <a href="#contact" onclick="toggleMenu()">KONTAKT</a>
 </div>
 
-<!-- HERO -->
 <header>
     <div class="hero-text">
         <h1>Restauracja Boston</h1>
@@ -330,7 +289,6 @@ section.show {
     </div>
 </header>
 
-<!-- ABOUT -->
 <section id="about">
     <div class="card">
         <h2>O nas</h2>
@@ -343,14 +301,25 @@ section.show {
 <!-- DAY -->
 <section id="day">
     <div class="card day">
-
         <div>
-            <h2>Danie dnia</h2>
-            <p style="color:#d0d0d0;">Zupa + drugie danie + surówka</p>
+            <h2>Danie dnia – 24,90 zł</h2>
+            <p style="color:#c9a24e;">🔥 Dostępne do wyczerpania</p>
             <a class="cta" href="tel:+48552483133">Zadzwoń</a>
         </div>
-
         <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d">
+    </div>
+</section>
+
+<!-- TRUST -->
+<section>
+    <div class="card trust">
+        <h2>Dlaczego Boston?</h2>
+        <p>
+            ✔ świeże składniki codziennie<br>
+            ✔ domowe obiady jak u mamy<br>
+            ✔ szybka obsługa (10–15 min)<br>
+            ✔ duże porcje
+        </p>
     </div>
 </section>
 
@@ -362,29 +331,30 @@ section.show {
     </div>
 </section>
 
-<!-- CONTACT -->
+<!-- MAP -->
 <section id="contact">
     <div class="card">
         <h2>Kontakt</h2>
         <p style="margin-top:10px; color:#d0d0d0;">
-            Chrobrego 9, Pasłęk • Restauracja Boston<br>
+            Chrobrego 9, Pasłęk<br>
             +48 55 248 31 33<br>
             12:00 – 18:00
         </p>
+
+        <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18..."
+        width="100%" height="250" style="border:0; border-radius:16px; margin-top:20px;">
+        </iframe>
     </div>
 </section>
 
-<!-- 🔥 MOBILE CALL BUTTON -->
 <a href="tel:+48552483133" class="sticky-call">📞 Zadzwoń</a>
 
 <script>
-
-// mobile menu
 function toggleMenu() {
     document.getElementById("mobileMenu").classList.toggle("active");
 }
 
-// scroll animation
 const sections = document.querySelectorAll("section");
 
 const observer = new IntersectionObserver(entries => {
@@ -393,12 +363,9 @@ const observer = new IntersectionObserver(entries => {
             entry.target.classList.add("show");
         }
     });
-}, {
-    threshold: 0.15
-});
+}, { threshold: 0.15 });
 
 sections.forEach(sec => observer.observe(sec));
-
 </script>
 
 </body>
