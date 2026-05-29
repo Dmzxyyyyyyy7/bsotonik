@@ -27,6 +27,9 @@ body {
     color: #fff;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* NAV */
@@ -79,53 +82,12 @@ nav {
     border-radius: 30px;
     text-decoration: none;
     font-size: 13px;
-    transition: 0.3s;
-}
-
-.call-btn:hover {
-    background: #c9a24e;
-    color: #000;
-    transform: scale(1.05);
-}
-
-/* HAMBURGER */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-}
-
-.hamburger div {
-    width: 25px;
-    height: 2px;
-    background: white;
-}
-
-/* MOBILE MENU */
-.mobile-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 70%;
-    height: 100vh;
-    background: rgba(10,10,12,0.98);
-    backdrop-filter: blur(20px);
-    display: flex;
-    flex-direction: column;
-    padding: 80px 30px;
-    gap: 25px;
-    transition: 0.4s ease;
-    z-index: 200;
-}
-
-.mobile-menu.active {
-    right: 0;
 }
 
 /* HERO */
 header {
     height: 100vh;
+    width: 100%;
     background: url('https://i.imgur.com/aWDALA1.jpeg') center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -138,7 +100,6 @@ header::after {
     position: absolute;
     inset: 0;
     background: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.9));
-    z-index: 1;
 }
 
 .hero-text {
@@ -146,26 +107,28 @@ header::after {
     text-align: center;
     max-width: 900px;
     z-index: 2;
+    padding: 0 20px;
 }
 
 .hero-text h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 85px;
+    font-size: 70px;
 }
 
 .hero-text p {
     margin-top: 15px;
     font-size: 18px;
+    color: #ddd;
 }
 
 /* SECTIONS */
 section {
     padding: 90px 20px;
-    max-width: 1100px;
-    margin: auto;
+    width: 100%;
+    max-width: 1000px;
     opacity: 0;
     transform: translateY(40px);
-    transition: all 0.8s ease;
+    transition: 0.8s;
 }
 
 section.show {
@@ -178,15 +141,14 @@ section.show {
     background: rgba(20,20,22,0.9);
     border: 1px solid #2a2a2f;
     border-radius: 22px;
-    padding: 30px;
-    backdrop-filter: blur(12px);
+    padding: 35px;
 }
 
 /* DAY */
 .day {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
     align-items: center;
 }
 
@@ -208,7 +170,7 @@ section.show {
     line-height: 1.7;
 }
 
-/* STICKY CALL + ANIMATION */
+/* STICKY CALL */
 .sticky-call {
     position: fixed;
     bottom: 20px;
@@ -230,15 +192,16 @@ section.show {
     100% { box-shadow: 0 0 0 0 rgba(201,162,78,0); }
 }
 
+/* MOBILE */
 @media (max-width: 768px) {
+
+    nav {
+        padding: 12px 20px;
+    }
 
     .links,
     .call-btn {
         display: none;
-    }
-
-    .hamburger {
-        display: flex;
     }
 
     .hero-text h1 {
@@ -251,6 +214,33 @@ section.show {
 
     .sticky-call {
         display: block;
+    }
+}
+
+/* DESKTOP FIX */
+@media (min-width: 1024px) {
+
+    .hero-text h1 {
+        font-size: 64px;
+    }
+
+    section {
+        padding: 110px 40px;
+    }
+
+    .card {
+        padding: 45px;
+    }
+
+    nav {
+        padding: 18px 80px;
+    }
+}
+
+@media (min-width: 1400px) {
+
+    .hero-text h1 {
+        font-size: 78px;
     }
 }
 </style>
@@ -269,18 +259,7 @@ section.show {
     </div>
 
     <a class="call-btn" href="tel:+48552483133">📞 ZADZWOŃ</a>
-
-    <div class="hamburger" onclick="toggleMenu()">
-        <div></div><div></div><div></div>
-    </div>
 </nav>
-
-<div class="mobile-menu" id="mobileMenu">
-    <a href="#about" onclick="toggleMenu()">O NAS</a>
-    <a href="#day" onclick="toggleMenu()">DANIE DNIA</a>
-    <a href="#menu" onclick="toggleMenu()">MENU</a>
-    <a href="#contact" onclick="toggleMenu()">KONTAKT</a>
-</div>
 
 <header>
     <div class="hero-text">
@@ -298,7 +277,6 @@ section.show {
     </div>
 </section>
 
-<!-- DAY -->
 <section id="day">
     <div class="card day">
         <div>
@@ -306,11 +284,10 @@ section.show {
             <p style="color:#c9a24e;">🔥 Dostępne do wyczerpania</p>
             <a class="cta" href="tel:+48552483133">Zadzwoń</a>
         </div>
-        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d">
+        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d" style="width:100%;border-radius:16px;">
     </div>
 </section>
 
-<!-- TRUST -->
 <section>
     <div class="card trust">
         <h2>Dlaczego Boston?</h2>
@@ -323,15 +300,13 @@ section.show {
     </div>
 </section>
 
-<!-- MENU -->
 <section id="menu">
     <div class="card">
         <h2>Menu</h2>
-        <img class="menu-img" src="https://i.imgur.com/hqYEd71.jpeg">
+        <img src="https://i.imgur.com/hqYEd71.jpeg" style="width:100%;border-radius:16px;">
     </div>
 </section>
 
-<!-- MAP -->
 <section id="contact">
     <div class="card">
         <h2>Kontakt</h2>
@@ -342,8 +317,9 @@ section.show {
         </p>
 
         <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18..."
-        width="100%" height="250" style="border:0; border-radius:16px; margin-top:20px;">
+        src="https://www.google.com/maps?q=Pasłęk%20Chrobrego%209&output=embed"
+        width="100%" height="300"
+        style="border:0; border-radius:16px; margin-top:20px;">
         </iframe>
     </div>
 </section>
@@ -351,10 +327,6 @@ section.show {
 <a href="tel:+48552483133" class="sticky-call">📞 Zadzwoń</a>
 
 <script>
-function toggleMenu() {
-    document.getElementById("mobileMenu").classList.toggle("active");
-}
-
 const sections = document.querySelectorAll("section");
 
 const observer = new IntersectionObserver(entries => {
